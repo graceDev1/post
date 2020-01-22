@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:fire@localhost:330
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 
-
+# convert of image 
 def save_image(photo):
     # filename = os.path.dirname(os.path.abspath(__file__))
     rand_hex  = secrets.token_hex(10)
@@ -22,10 +22,7 @@ def save_image(photo):
     return file_name
 
 
-    
-
-
-
+# db post creation  table
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
@@ -40,6 +37,8 @@ class Post(db.Model):
 def index():
     return "Welcome to post"
 
+
+# post root and insert 
 
 @app.route('/post', methods=['POST','GET'])
 def post_image():
